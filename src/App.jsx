@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css'
+import MemeList from "./components/MemeList"
 
 function App() {
   const [meme, setMeme] = React.useState({
@@ -10,7 +11,12 @@ function App() {
   const [allMemes, setAllMemes] = React.useState([])
   
   //This spot will be state for the memelist of all memes 
-
+  const [memeList, setMemeList] = React.useState([{
+    topText: "meme",
+    bottomText: "meme",
+    randomImage: "http://i.imgflip.com/1bij.jpg" 
+}])
+  
   React.useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
         .then(res => res.json())
@@ -67,6 +73,13 @@ function App() {
                 <h2 className="meme--text bottom">{meme.bottomText}</h2>
             </div>
         </main>
+        <div className="memes-container">
+          <MemeList 
+            memeList = {memeList}
+            meme = {meme}
+            setMemeList = {setMemeList}
+          />
+        </div>
     </div>
   )
 }
