@@ -10,16 +10,17 @@ function App() {
   })
   const [allMemes, setAllMemes] = React.useState([])
   
-  //This spot will be state for the memelist of all memes 
+  //list of created memes
   const [memeList, setMemeList] = React.useState([])
   
+  //populate allMemes with fetch from api
   React.useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
         .then(res => res.json())
         .then(data => setAllMemes(data.data.memes))
     }, [])
 
-    
+  //get a new random meme image
   function getMemeImage() {
     const randomNumber = Math.floor(Math.random() * allMemes.length)
     const url = allMemes[randomNumber].url
@@ -28,6 +29,8 @@ function App() {
         randomImage: url
     }))}
 
+  //update the meme in real time on the image from input
+  //controlled state
   function handleChange(event) {
       const {name, value} = event.target
       setMeme(prevMeme => ({
@@ -70,11 +73,13 @@ function App() {
             </div>
         </main>
         <div className="memes-container">
-          <MemeList 
+          {<MemeList 
             memeList = {memeList}
             meme = {meme}
+            setMeme = {setMeme}
             setMemeList = {setMemeList}
-          />
+            handleChange = {handleChange}
+          />}
         </div>
     </div>
   )
