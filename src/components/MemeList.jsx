@@ -1,22 +1,24 @@
 import React from "react"
+import MemeForList from "./MemeForList"
 
 // props are the memelist state
 
 export default function MemeList(props) {
     function handleClick() {
-        const meme = props.meme
         props.setMemeList(prevMemes => {
+            const theId = prevMemes.length 
+            const meme = {...props.meme, id: theId}
             return ([...prevMemes, meme])
         })
+        
     }
 
     let memes = props.memeList.map(meme => {
        return (
-        <li className="meme">
-            <img src={meme.randomImage} className="meme--image" />
-            <h2 className="meme--text top">{meme.topText}</h2>
-            <h2 className="meme--text bottom">{meme.bottomText}</h2>
-        </li>
+       <MemeForList
+            meme = {meme}
+            setMemeList = {props.setMemeList}
+        />
        )
     })
     return (

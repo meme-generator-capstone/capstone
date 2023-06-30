@@ -11,11 +11,7 @@ function App() {
   const [allMemes, setAllMemes] = React.useState([])
   
   //This spot will be state for the memelist of all memes 
-  const [memeList, setMemeList] = React.useState([{
-    topText: "meme",
-    bottomText: "meme",
-    randomImage: "http://i.imgflip.com/1bij.jpg" 
-}])
+  const [memeList, setMemeList] = React.useState([])
   
   React.useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
