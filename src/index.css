@@ -170,3 +170,10 @@ main {
 .top {
   top: 0;
 }
+
+.edit {
+  margin: 10px;
+}
+.meme {
+  list-style: none;
+}
