@@ -20,7 +20,7 @@ export default function MemeList(props) {
        )
     })
 
-    console.log(memes)
+    
     return (
         <div className="memelist">
             <button className="add-meme"
