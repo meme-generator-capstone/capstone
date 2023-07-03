@@ -25,7 +25,7 @@ export default function Meme(props) {
                     className="form--button"
                     onClick={props.getImg}
                 >
-                    Get a new meme image :frame_with_picture:
+                    Get a new meme image 
                 </button>
             </div>
             <div className="meme">

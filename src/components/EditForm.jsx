@@ -1,13 +1,10 @@
 import React from "react" 
 
 export default function EditForm(props){
-    function handleSubmit(){
-        return
-    }
-
     //placeholder state meme for editing with controlled inputs
     const [editMeme, setEditMeme] = React.useState(props.meme)
 
+    //controlled inputs using editMeme temp state
     function handleChange(event) {
         const {name, value} = event.target
         setEditMeme(prevMeme => ({
@@ -16,6 +13,7 @@ export default function EditForm(props){
       }))
     }
 
+    //adds editited meme to the memelist state from the editform state
     function handleSubmit() {
         props.toggle()
         props.setMemeList(prev => {

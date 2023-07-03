@@ -2,28 +2,16 @@ import React from "react"
 import EditForm from "./EditForm"
 
 export default function MemeForList(props) {
-
+    //used for conditional rendering
     const [isEditing, setIsEditing] = React.useState(false)
 
+    //makes edit form appear and disappear by changing state
     function toggleIsEditing() {
         setIsEditing(prev => !prev)
     }
     
-
-    // props.setMemeList(prev => console.log(`prev: ${prev}`))
-
-    // function deleteMeme() {
-    //     props.setMemeList(prev => {
-    //         return (prev.map(meme => {
-    //             if (meme.key != props.meme.key) {
-    //                 return meme
-    //             }
-    //         }))
-    //     })
-    // }
-
-    //props.meme.key
-    function testfunc() {
+    //filter out id of deleted post, reassigns new list to state
+    function deleteFunc() {
         props.setMemeList(prev => {
             const newarray = prev.filter(meme => meme.key != props.meme.key)
             return newarray
@@ -46,7 +34,7 @@ export default function MemeForList(props) {
                         
                     </li>
                     <button onClick={toggleIsEditing}>Edit</button> 
-                    <button onClick={testfunc}>Delete</button>
+                    <button onClick={deleteFunc}>Delete</button>
                     </div>
                 }
         </div>
